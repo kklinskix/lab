@@ -1,0 +1,14 @@
+# Скрипт для добавления временного штампа в конец файлов
+if [ "$#" -eq 0 ]; then
+    echo "Ошибка: Не указаны имена файлов."
+    exit 1
+fi
+for file in "$@"; do
+    if [ -f "$file" ]; then
+        timestamp=$(date)
+        echo "$timestamp" >> "$file"
+        echo "Временной штамп добавлен в файл $file."
+    else
+        echo "Ошибка: Файл $file не найден."
+    fi
+done
